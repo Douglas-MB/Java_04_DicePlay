@@ -4,7 +4,6 @@ public class Casino {
     int cashPlayer=100;
     Player newPlayer = new Player();
 
-
     void intro() throws InterruptedException {
         String[] msg = new String[]{"\t\t\tWELCOME ", "TO ", "\n\t\t\t\tDMB's CASINO\n\n"};
         for (int i = 0; i < msg.length; i++) {
@@ -13,12 +12,12 @@ public class Casino {
         }
     }
     void generatePlayerInfo(){
-        getPlayerInfo();
+        //getPlayerInfo();
         MyTools.clean();
         showPlayerInfo();
-
-
     }
+
+
     void getPlayerInfo(){
         Scanner playerInfo=MyTools.scan();
 
