@@ -3,11 +3,9 @@ public class Main {
         MyTools.clean();
 
         Casino testC = new Casino();
-        testC.intro();
-        testC.generatePlayerInfo();
 
         Player test = new Player("Me",26, null);
         test.rollDie();
-
+        test.getDie().rollsInfo();
     }
 }

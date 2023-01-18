@@ -4,22 +4,13 @@ public class Player {
     private int age;
     private int money;
     private Die die;
-    private int auxCnt;
-
 
 
     void rollDie(){
-        die.showDieFace();
+        this.die.rollCnt();
+        this.die.setRollCnt(die.getRollCnt());
+        this.die.showDieFace();
     }
-
-    public int getAuxCnt() {
-        return auxCnt;
-    }
-
-    public void setAuxCnt(int auxCnt) {
-        this.auxCnt = auxCnt;
-    }
-
     public String getName() {
         return name;
     }
@@ -56,7 +47,6 @@ public class Player {
         this.money = moneyPlayer.cashPlayer;
         this.die = die;
         setDie(new Die());
-        this.auxCnt = 0;
 
     }
 }
