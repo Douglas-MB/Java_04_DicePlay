@@ -4,12 +4,21 @@ public class Player {
     private int age;
     private int money;
     private Die die;
+    private int rollPlayer;
 
+    public int getRollPlayer() {
+        return rollPlayer;
+    }
+
+    public void setRollPlayer(int rollPlayer) {
+        this.rollPlayer = rollPlayer;
+    }
 
     void rollDie(){
+        setRollPlayer(die.rollDie());
         this.die.rollCnt();
         this.die.setRollCnt(die.getRollCnt());
-        this.die.showDieFace();
+        System.out.println("Player roll: "+getRollPlayer());
     }
     public String getName() {
         return name;
@@ -27,6 +36,10 @@ public class Player {
         this.age = age;
     }
 
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
     public int getMoney() {
         return money;
     }
@@ -40,13 +53,15 @@ public class Player {
 
     public Player(){}
     public Player(String name, int age, Die die) {
-        Casino moneyPlayer = new Casino();
+        Casino infoPlayer = new Casino();
 
         this.name = name;
         this.age = age;
-        this.money = moneyPlayer.cashPlayer;
+        infoPlayer.generatePlayerInfo();
+        this.money = getMoney();
         this.die = die;
         setDie(new Die());
+
 
     }
 }

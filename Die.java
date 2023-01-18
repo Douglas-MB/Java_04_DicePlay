@@ -16,10 +16,10 @@ public class Die {
     int rollCnt(){
         return rollCnt++;
    }
-    int getDieFace(){
+    int rollDie(){
         return MyTools.rng(6)+1;
     }
     void showDieFace(){
-        System.out.println("Here is your roll:  "+getDieFace());
+        System.out.println("Here is your roll:  "+ rollDie());
     }
 }

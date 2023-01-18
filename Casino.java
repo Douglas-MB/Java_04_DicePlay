@@ -1,9 +1,47 @@
 import java.util.Scanner;
 
 public class Casino {
-    int cashPlayer=100;
-    Player newPlayer = new Player();
+    private  Player newPlayer = new Player();
+    private  Die dieCasino = new Die();
 
+    private int rollCasino;
+
+    public int getRollCasino() {
+        return rollCasino;
+    }
+
+    public void setRollCasino(int rollCasino) {
+        this.rollCasino = rollCasino;
+    }
+
+    private boolean winLose;
+
+    boolean isWinLose() {
+        if (this.newPlayer.getRollPlayer() != getRollCasino()) {
+            winLose = true;
+        } else {
+            winLose = false;
+        }
+        return winLose;
+    }
+
+    void showVictory(){
+        isWinLose();
+
+        if(winLose){
+            System.out.println("HOUSE WINS!! :^)");
+        }else{
+            System.out.printf("%s wins!", newPlayer.getName());
+        }
+    }
+
+    void rollDie(){
+        setRollCasino(dieCasino.rollDie());
+        System.out.println("House roll: "+getRollCasino());
+        this.dieCasino.rollCnt();
+        this.dieCasino.setRollCnt(dieCasino.getRollCnt());
+        System.out.println();
+    }
     void intro() throws InterruptedException {
         String[] msg = new String[]{"\t\t\tWELCOME ", "TO ", "\n\t\t\t\tDMB's CASINO\n\n"};
         for (int i = 0; i < msg.length; i++) {
@@ -14,6 +52,7 @@ public class Casino {
     void generatePlayerInfo(){
         //getPlayerInfo();
         MyTools.clean();
+        this.newPlayer.setMoney(100);
         showPlayerInfo();
     }
 
