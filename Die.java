@@ -1,10 +1,8 @@
 public class Die {
-    private int rollCnt;
+    static private  int rollCnt;
 
 
-    void rollsInfo(){
-        System.out.println(getRollCnt());
-    }
+
     public int getRollCnt() {
         return rollCnt;
     }
@@ -13,13 +11,17 @@ public class Die {
         this.rollCnt = rollCnt;
     }
 
-    int rollCnt(){
-        return rollCnt++;
+    void rollCnt(){
+        setRollCnt(++rollCnt);
    }
-    int getDieFace(){
-        return MyTools.rng(6)+1;
+    public int rollDie(int aux){
+        while(aux==0){
+            aux = MyTools.rng(7);
+            if(aux!=0){
+                return aux;
+            }
+        }
+        return aux;
     }
-    void showDieFace(){
-        System.out.println("Here is your roll:  "+getDieFace());
-    }
+
 }
