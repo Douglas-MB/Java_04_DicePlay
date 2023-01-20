@@ -1,11 +1,49 @@
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Scanner;
 
 public class Player {
-    private String name;
-    private int age;
+    public String name;
+    public int age;
+    public Die diePlayer;
+    public int rollPlayer;
     private int money;
-    private Die die;
-    private int rollPlayer;
 
+    private Scanner playerInfo;
+
+    public void getPlayerInfo(){
+        System.out.print("What is your name, player?\t");
+        setName(playerInfo.nextLine());
+        System.out.printf("How old are you %s ?\t", getName());
+        setAge(playerInfo.nextInt());
+    }
+
+    public void playerToRoll(){
+        setRollPlayer(diePlayer.rollDie());
+        diePlayer.rollCnt();
+        System.out.printf("%s roll is %d%n", getName(), getRollPlayer());
+    }
+
+public Player(){
+
+}
+    public Player(String name, int age, @NotNull Die diePlayer) {
+        this.name = name;
+        this.age = age;
+        this.diePlayer = diePlayer;
+
+        playerInfo = MyTools.scan();
+        setDiePlayer(new Die());
+
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
     public int getRollPlayer() {
         return rollPlayer;
     }
@@ -14,12 +52,6 @@ public class Player {
         this.rollPlayer = rollPlayer;
     }
 
-    void rollDie(){
-        setRollPlayer(die.rollDie());
-        this.die.rollCnt();
-        this.die.setRollCnt(die.getRollCnt());
-        System.out.println("Player roll: "+getRollPlayer());
-    }
     public String getName() {
         return name;
     }
@@ -36,32 +68,12 @@ public class Player {
         this.age = age;
     }
 
-    public void setMoney(int money) {
-        this.money = money;
+    public Die getDiePlayer() {
+        return diePlayer;
     }
 
-    public int getMoney() {
-        return money;
-    }
-    public Die getDie() {
-        return die;
+    public void setDiePlayer(Die diePlayer) {
+        this.diePlayer = diePlayer;
     }
 
-    public void setDie(Die die) {
-        this.die = die;
-    }
-
-    public Player(){}
-    public Player(String name, int age, Die die) {
-        Casino infoPlayer = new Casino();
-
-        this.name = name;
-        this.age = age;
-        infoPlayer.generatePlayerInfo();
-        this.money = getMoney();
-        this.die = die;
-        setDie(new Die());
-
-
-    }
 }
